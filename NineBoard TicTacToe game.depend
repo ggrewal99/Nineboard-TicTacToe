@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1679781035 source:d:\coding projects\nineboard-tictactoe\main.cpp
+	<iostream>
+	<iomanip>
+	<string>
+	<list>
+	<iterator>
+	<map>
+	<cstdlib>
+	"TicTacToe.h"
+	"BoardCoordinate.h"
+	"NineBoard.h"
+	"HumanPlayer.h"
+	"RandomPlayer.h"
+	"MiniMaxPlayer.h"
+	"Game.h"
+
+1679639340 d:\coding projects\nineboard-tictactoe\tictactoe.h
+
+1679780806 d:\coding projects\nineboard-tictactoe\boardcoordinate.h
+
+1679992045 d:\coding projects\nineboard-tictactoe\nineboard.h
+	"TicTacToe.h"
+	"BoardCoordinate.h"
+	<cstdlib>
+	<iostream>
+
+1679989756 d:\coding projects\nineboard-tictactoe\humanplayer.h
+
+1679639340 d:\coding projects\nineboard-tictactoe\randomplayer.h
+
+1679639340 d:\coding projects\nineboard-tictactoe\minimaxplayer.h
+
+1679992302 d:\coding projects\nineboard-tictactoe\game.h
+	"TicTacToe.h"
+

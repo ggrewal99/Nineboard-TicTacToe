@@ -4,8 +4,10 @@
 #include <list>
 #include <iterator>
 #include <map>
+#include <cstdlib>
 
 #include "TicTacToe.h"
+#include "BoardCoordinate.h"
 #include "NineBoard.h"
 #include "HumanPlayer.h"
 #include "RandomPlayer.h"
