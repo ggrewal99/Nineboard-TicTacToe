@@ -10,9 +10,10 @@ class Game
 private:
 	TicTacToe board;
 	NineBoard nBoards;
+	BoardCoordinate currentBoard;
 public:
 	char play();
-	bool checkWin(char player, NineBoard board);
+	bool masterCheckWin (char player, NineBoard board);
 };
 
 char Game::play()
@@ -23,36 +24,45 @@ char Game::play()
     bool done = false;
     char player = 'X';
     while(!done) {
-        BoardCoordinate currentBoard;
-        currentBoard = nBoards.getCurrent_board();
+        currentBoard = nBoards.getCurrent_boardCoord();
         board = nBoards.getBoard();
         int x = -1;
         int y = -1;
         if(player == 'X') {
+            if(nBoards.getStatus(currentBoard.row, currentBoard.col) != 'C') {
+                p1.selectBoard(nBoards, x, y);
+                nBoards.setCurrentBoard(x, y);
+                board = nBoards.getBoard();
+            }
             p1.getMove(board, x, y);
-            nBoards.addMove(player, x, y);
             cout << "X makes a move (" << (x + 1) << "," << (y + 1) << ") "
 					<< endl;
+            nBoards.addMove(player, x, y);
 			nBoards.displayBoards();
-            done = checkWin(player, board);
+			done = masterCheckWin(player, nBoards);
 			player = 'O';
         }
         else {
+            if(nBoards.getStatus(currentBoard.row, currentBoard.col) != 'C') {
+                p2.selectBoard(nBoards, x, y);
+                nBoards.setCurrentBoard(x, y);
+                board = nBoards.getBoard();
+            }
             p2.getMove(board, x, y);
-            nBoards.addMove(player, x, y);
             cout << "O makes a move (" << (x + 1) << "," << (y + 1) << ") "
 					<< endl;
+            nBoards.addMove(player, x, y);
             nBoards.displayBoards();
-            done = checkWin(player, board);
+            done = masterCheckWin(player, nBoards);
             player = 'X';
         }
     }
-    return board.gameStatus();
+    return nBoards.gameStatus();
 }
-}
-bool Game::checkWin(char player, TicTacToe board) {
+
+bool Game::masterCheckWin(char player, NineBoard board) {
     char gStatus = board.gameStatus();
-	if (gStatus == player) {
+    if (gStatus == player) {
 		cout << "Player " << player<< " wins!" << endl;
 		return true;
 	} else if (gStatus == 'D') {
@@ -60,10 +70,8 @@ bool Game::checkWin(char player, TicTacToe board) {
 		return true;
 	} else if (gStatus != 'C') {
 		return true;
-	} else {
-
-	}
-	return false;
+	} else
+		return false;
 }
 
 #endif

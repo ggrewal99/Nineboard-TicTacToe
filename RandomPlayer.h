@@ -12,6 +12,7 @@ public:
         player = p;
     }
     void getMove(TicTacToe board, int& row, int& col);
+    void selectBoard(NineBoard board, int& row, int& col);
 };
 
 void RandomPlayer::getMove(TicTacToe board, int& row, int& col){
@@ -22,7 +23,13 @@ void RandomPlayer::getMove(TicTacToe board, int& row, int& col){
 	advance(it, pos); // @suppress("Invalid arguments")
 	row = *it/3;
 	col = *it%3;
+}
 
+void RandomPlayer::selectBoard(NineBoard board, int& row, int& col) {
+    do {
+        row = rand() % 3;
+        col = rand() % 3;
+    } while(board.getStatus(row, col) != 'C');
 }
 
 #endif

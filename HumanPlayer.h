@@ -12,6 +12,7 @@ public:
         player = p;
     }
     void getMove(TicTacToe board, int& row, int& col);
+    void selectBoard(NineBoard board, int& row, int& col);
 };
 
 void HumanPlayer::getMove(TicTacToe board, int& row, int& col){
@@ -22,6 +23,16 @@ void HumanPlayer::getMove(TicTacToe board, int& row, int& col){
         row = row - 1;
         col = col - 1;
     } while (!board.isValidMove(row,col));
+}
+
+void HumanPlayer::selectBoard(NineBoard board, int& row, int& col) {
+    do {
+        cout << "Player " << player << " enter board coordinates: ";
+        cin >> row >> col;
+        cout << endl;
+        row = row - 1;
+        col = col - 1;
+    } while(board.getStatus(row, col) != 'C');
 }
 
 #endif

@@ -8,6 +8,12 @@ class TicTacToe {
 		char board[3][3];
 		int noOfMoves;
 		list<int> emptyCells;
+		char status; /*
+                    'X' means X has won
+                    'O' means O has won
+                    'D' means full/draw
+                    'C' means continue
+                */
     public:
 		TicTacToe(){
 			for (int i = 0; i < 3; i++)
@@ -18,12 +24,13 @@ class TicTacToe {
 			for(int i = 0; i < 9; i++) {
 				emptyCells.push_back(i);
 			}
+			status = 'C';
 		}
 
-        void displayBoard(); 
+        void displayBoard();
 		bool isValidMove(int row, int col) const;
 		// Return 'D' for draw 'C' for continue and 'X' or 'O' for win
-    	char gameStatus();  
+    	char gameStatus();
     	void addMove(char player,int row,int col);
     	void updateEmptyCells(int x, int y);
     	list<int> getEmptyCells() {
@@ -35,11 +42,22 @@ class TicTacToe {
     	char getChar(int i, int j) {
     		return board[i][j];
     	}
+    	char getStatus() {
+            return status;
+    	}
+    	bool isBoardFull();
     	void removeMove(int row, int col);
 };
 
 void TicTacToe::removeMove(int row, int col) {
 	board[row][col] = ' ';
+}
+
+bool TicTacToe::isBoardFull() {
+    if(noOfMoves == 9)
+        return true;
+    else
+        return false;
 }
 
 void TicTacToe::updateEmptyCells(int x, int y) {
@@ -82,25 +100,36 @@ bool TicTacToe::isValidMove(int row, int col) const {
 
 char TicTacToe::gameStatus() {
 	//Check rows for a win
+	//cout <<"gameStatus()" << endl;
+	//cout << "noOfMoves: " << noOfMoves << endl;
+	//Check rows for a win
 	for (int row = 0; row < 3; row++)
 		if (board[row][0] != ' ' && (board[row][0] == board[row][1])
-				&& (board[row][1] == board[row][2]))
+				&& (board[row][1] == board[row][2])){
+            status = board[row][0];
 			return board[row][0];
+        }
 
 	//Check columns for a win
 	for (int col = 0; col < 3; col++)
 		if (board[0][col] != ' ' && (board[0][col] == board[1][col])
-				&& (board[1][col] == board[2][col]))
+				&& (board[1][col] == board[2][col])){
+            status = board[0][col];
 			return board[0][col];
+        }
 
 	//Check diagonals for a win
 	if (board[0][0] != ' ' && (board[0][0] == board[1][1])
-			&& (board[1][1] == board[2][2]))
+			&& (board[1][1] == board[2][2])){
+        status = board[0][0];
 		return board[0][0];
+    }
 
 	if (board[2][0] != ' ' && (board[2][0] == board[1][1])
-			&& (board[1][1] == board[0][2]))
+			&& (board[1][1] == board[0][2])){
+        status = board[2][0];
 		return board[2][0];
+    }
 
 	if (noOfMoves < 9)
 		return 'C';
