@@ -47,6 +47,9 @@ class TicTacToe {
     	}
     	bool isBoardFull();
     	void removeMove(int row, int col);
+    	char displayCell(int i, int j) {
+			return board[i][j];
+		}
 };
 
 void TicTacToe::removeMove(int row, int col) {
@@ -99,9 +102,6 @@ bool TicTacToe::isValidMove(int row, int col) const {
 }
 
 char TicTacToe::gameStatus() {
-	//Check rows for a win
-	//cout <<"gameStatus()" << endl;
-	//cout << "noOfMoves: " << noOfMoves << endl;
 	//Check rows for a win
 	for (int row = 0; row < 3; row++)
 		if (board[row][0] != ' ' && (board[row][0] == board[row][1])

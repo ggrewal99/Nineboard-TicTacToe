@@ -65,23 +65,52 @@ public:
 
 void NineBoard::displayBoards()
 {
-    cout << current_board.row + 1 << ", " << current_board.col + 1<< endl;
-    for (int row = 0; row < 3; row++)
-    {
-        cout << "*****************" << endl;
-        for (int col = 0; col < 3; col++)
-        {
-            cout << "Board (" << row + 1 << ", " << col + 1 << "): " << endl;
-            if (current_board == BoardCoordinate(row, col))
-            {
-                cout << "(CURRENT)" << endl;
-            }
-            cout << "Status: " << nBoards[row][col].getStatus() << endl;
-            nBoards[row][col].displayBoard();
-            cout << endl;
-        }
-    }
-    cout << "*****************" << endl;
+    for (int bigRow = 0; bigRow < 3; bigRow++) {
+
+		for (int row = 0; row < 3; row++)
+    	{
+    		if(row == 0) {
+    			for (int i = 0; i < 3; i++) {
+    				if(bigRow == current_board.row && i == current_board.col)
+    					cout << "  * * * * * * * ";
+    				else
+    					cout << "  - - - - - - - ";
+				}
+    			cout << endl;
+			}
+        	for (int bigCol = 0; bigCol < 3; bigCol++)
+        	{
+           		for (int col = 0; col < 3; col++) {
+           			if(col != 0)
+           				cout << " ";
+           			if(bigRow == current_board.row && bigCol == current_board.col && col == 0)
+           				cout << "*";
+           			else
+           				cout << "|";
+            		cout << setw(3) << nBoards[bigRow][bigCol].displayCell(row, col);
+					if(col == 2)
+            			cout << " ";
+            	}
+            	if(bigRow == current_board.row && bigCol == current_board.col)
+            		cout << "*";
+            	else
+					cout << "|";
+        	}
+        	cout << endl;
+        	if (row != 2)
+				cout << "|____|____|____||____|____|____||____|____|____|" << endl << "|    |    |    ||    |    |    ||    |    |    |" << endl;
+			if(row == 2) {
+				for (int i = 0; i < 3; i++) {
+    				if(bigRow == current_board.row && i == current_board.col)
+    					cout << "  * * * * * * * ";
+    				else
+    					cout << "  - - - - - - - ";
+				}
+    			cout << endl;
+			}
+
+    	}
+	}
 }
 
 bool NineBoard::addMove(char player, int x, int y) {
@@ -89,22 +118,10 @@ bool NineBoard::addMove(char player, int x, int y) {
     int currentCol = current_board.col;
     if(nBoards[currentRow][currentCol].isValidMove(x, y)) {
         nBoards[currentRow][currentCol].addMove(player, x, y);
-
-        char gStatus = nBoards[currentRow][currentCol].gameStatus();
-        if (gStatus == player) {
-            cout << "Player " << player<< " wins!" << endl;
-            return true;
-        } else if (gStatus == 'D') {
-            cout << "This game is a draw!" << endl;
-            return true;
-        } else if (gStatus != 'C') {
-            return true;
-        } else {
-            current_board.row = x;
-            current_board.col = y;
-            noOfMoves++;
-            return false;
-        }
+        nBoards[currentRow][currentCol].gameStatus();
+        current_board.row = x;
+        current_board.col = y;
+        noOfMoves++;
     }
 }
 
