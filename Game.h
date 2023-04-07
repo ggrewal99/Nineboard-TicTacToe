@@ -32,10 +32,13 @@ char Game::play()
         int x = -1;
         int y = -1;
         if(playerSymbol == 'X') {
-            if(nBoards.getStatus(currentBoard.row, currentBoard.col) != 'C') {
+            while(nBoards.getStatus(currentBoard.row, currentBoard.col) != 'C') {
                 player[0]->selectBoard(nBoards, x, y);
                 nBoards.setCurrentBoard(x, y);
+                currentBoard.row = x;
+                currentBoard.col = y;
                 board = nBoards.getBoard();
+                cout << "X selects board (" << (x + 1) << "," << (y + 1) << ") " << endl;
             }
             player[0]->getMove(board, x, y);
             cout << "X makes a move (" << (x + 1) << "," << (y + 1) << ") "
@@ -46,10 +49,13 @@ char Game::play()
 			playerSymbol = 'O';
         }
         else {
-            if(nBoards.getStatus(currentBoard.row, currentBoard.col) != 'C') {
+            while(nBoards.getStatus(currentBoard.row, currentBoard.col) != 'C') {
                 player[1]->selectBoard(nBoards, x, y);
                 nBoards.setCurrentBoard(x, y);
+                currentBoard.row = x;
+                currentBoard.col = y;
                 board = nBoards.getBoard();
+                cout << "O selects board (" << (x + 1) << "," << (y + 1) << ") " << endl;
             }
             player[1]->getMove(board, x, y);
             cout << "O makes a move (" << (x + 1) << "," << (y + 1) << ") "
@@ -59,6 +65,14 @@ char Game::play()
             done = checkWin(playerSymbol, nBoards);
             playerSymbol = 'X';
         }
+/*
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                cout << "Board (" << (i + 1) << "," << (j + 1) << ") status: " << nBoards.getStatus(i, j) << "  ";
+            }
+            cout << endl;
+        }
+*/
     }
     return nBoards.gameStatus();
 }

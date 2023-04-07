@@ -42,6 +42,9 @@ public:
     TicTacToe getBoard() {
         return nBoards[current_board.row][current_board.col];
     }
+    TicTacToe getBoard(int row, int col) {
+        return nBoards[row][col];
+    }
     int getNoOfMoves() {
         return noOfMoves;
     }

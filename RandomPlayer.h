@@ -8,7 +8,7 @@ class RandomPlayer: public Player {
 public:
     RandomPlayer(char p) : Player(p) {}
     void getMove(TicTacToe board, int& row, int& col);
-    void selectBoard(NineBoard board, int& row, int& col);
+    void selectBoard(NineBoard boards, int& row, int& col);
 };
 
 void RandomPlayer::getMove(TicTacToe board, int& row, int& col){
@@ -21,11 +21,10 @@ void RandomPlayer::getMove(TicTacToe board, int& row, int& col){
 	col = *it%3;
 }
 
-void RandomPlayer::selectBoard(NineBoard board, int& row, int& col) {
+void RandomPlayer::selectBoard(NineBoard boards, int& row, int& col) {
     do {
         row = rand() % 3;
         col = rand() % 3;
-    } while(board.getStatus(row, col) != 'C');
+    } while(boards.getStatus(row, col) != 'C');
 }
-
 #endif

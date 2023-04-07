@@ -11,6 +11,6 @@ public:
         player = p;
     }
     virtual void getMove(TicTacToe board, int& row, int& col) = 0;
-    virtual void selectBoard(NineBoard board, int& row, int& col) = 0;
+    virtual void selectBoard(NineBoard boards, int& row, int& col) = 0;
 };
 #endif // PLAYER_H

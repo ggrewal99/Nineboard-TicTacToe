@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1679777435 source:d:\coding projects\nineboard-tictactoe\main.cpp
+1680856637 source:d:\coding projects\nineboard-tictactoe\main.cpp
 	<iostream>
 	<iomanip>
 	<string>
@@ -10,27 +10,33 @@
 	"TicTacToe.h"
 	"BoardCoordinate.h"
 	"NineBoard.h"
+	"Player.h"
 	"HumanPlayer.h"
 	"RandomPlayer.h"
+	"SmartPlayer.h"
 	"MiniMaxPlayer.h"
 	"Game.h"
 
-1680614974 d:\coding projects\nineboard-tictactoe\tictactoe.h
+1680853278 d:\coding projects\nineboard-tictactoe\tictactoe.h
 
-1680399809 d:\coding projects\nineboard-tictactoe\boardcoordinate.h
+1680840243 d:\coding projects\nineboard-tictactoe\boardcoordinate.h
 
-1680614935 d:\coding projects\nineboard-tictactoe\nineboard.h
+1680853902 d:\coding projects\nineboard-tictactoe\nineboard.h
 	"TicTacToe.h"
 	"BoardCoordinate.h"
 	<cstdlib>
 	<iostream>
 
-1680417854 d:\coding projects\nineboard-tictactoe\humanplayer.h
+1680853971 d:\coding projects\nineboard-tictactoe\humanplayer.h
 
-1680417942 d:\coding projects\nineboard-tictactoe\randomplayer.h
+1680856614 d:\coding projects\nineboard-tictactoe\randomplayer.h
 
-1679635740 d:\coding projects\nineboard-tictactoe\minimaxplayer.h
+1680853278 d:\coding projects\nineboard-tictactoe\minimaxplayer.h
 
-1680434672 d:\coding projects\nineboard-tictactoe\game.h
+1680856662 d:\coding projects\nineboard-tictactoe\game.h
 	"TicTacToe.h"
+
+1680853961 d:\coding projects\nineboard-tictactoe\player.h
+
+1680856677 d:\coding projects\nineboard-tictactoe\smartplayer.h
 

@@ -22,7 +22,7 @@ int main()
 {
 	srand(time(0));
     Player* p1 = new HumanPlayer('X');
-    Player* p2 = new RandomPlayer('O');
+    Player* p2 = new SmartPlayer('O');
 	Game game(p1, p2);
 	game.play();
 
