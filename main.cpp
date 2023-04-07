@@ -9,8 +9,10 @@
 #include "TicTacToe.h"
 #include "BoardCoordinate.h"
 #include "NineBoard.h"
+#include "Player.h"
 #include "HumanPlayer.h"
 #include "RandomPlayer.h"
+#include "SmartPlayer.h"
 #include "MiniMaxPlayer.h"
 #include "Game.h"
 
@@ -19,33 +21,12 @@ using namespace std;
 int main()
 {
 	srand(time(0));
-
-	/* Run the games n number of times
-		int noOfGames = 1000;
-		int wins = 0;
-		int losses = 0;
-		int draws = 0;
-		for(int i = 0; i < 1000; i++) {
-			Game game;
-			char result = game.play();
-			cout << result << endl;
-			if(result == 'X') {
-				wins++;
-			}
-			else if(result == 'O') {
-				losses++;
-			}
-			else {
-				draws++;
-			}
-		}
-		cout << "Wins: " << wins << endl;
-		cout << "Losses: " << losses << endl;
-		cout << "Draws: " << draws << endl;
-	*/
-
-	Game game;
+    Player* p1 = new HumanPlayer('X');
+    Player* p2 = new RandomPlayer('O');
+	Game game(p1, p2);
 	game.play();
 
+    delete p1;
+    delete p2;
 	return 0;
 }

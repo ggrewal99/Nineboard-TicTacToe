@@ -4,13 +4,9 @@ using namespace std;
 
 // RANDOM PLAYER
 
-class RandomPlayer{
-private:
-    char player;
+class RandomPlayer: public Player {
 public:
-    RandomPlayer(char p){
-        player = p;
-    }
+    RandomPlayer(char p) : Player(p) {}
     void getMove(TicTacToe board, int& row, int& col);
     void selectBoard(NineBoard board, int& row, int& col);
 };

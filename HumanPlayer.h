@@ -4,13 +4,9 @@ using namespace std;
 
 // HUMAN PLAYER
 
-class HumanPlayer{
-private:
-    char player;
+class HumanPlayer: public Player{
 public:
-    HumanPlayer(char p){
-        player = p;
-    }
+    HumanPlayer(char p) : Player(p) {}
     void getMove(TicTacToe board, int& row, int& col);
     void selectBoard(NineBoard board, int& row, int& col);
 };
