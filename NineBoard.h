@@ -95,10 +95,38 @@ void NineBoard::displayBoards()
             		cout << "*";
             	else
 					cout << "|";
+
+            	if(bigCol == 2) {
+            		cout << endl;
+            	}
         	}
-        	cout << endl;
-        	if (row != 2)
-				cout << "|____|____|____||____|____|____||____|____|____|" << endl << "|    |    |    ||    |    |    ||    |    |    |" << endl;
+
+        	if (row != 2) {
+        		for (int i = 0; i < 3; i++) {
+        			if(bigRow == current_board.row && i == current_board.col)
+        				cout << "*";
+        			else
+        				cout << "|";
+        			cout << "____|____|____";
+        			if(bigRow == current_board.row && i == current_board.col)
+        				cout << "*";
+        			else
+        				cout << "|";
+        		}
+        		cout << endl;
+        		for (int i = 0; i < 3; i++) {
+        			if(bigRow == current_board.row && i == current_board.col)
+        				cout << "*";
+        			else
+        				cout << "|";
+        			cout << "    |    |    ";
+        			if(bigRow == current_board.row && i == current_board.col)
+        				cout << "*";
+        			else
+        				cout << "|";
+        		}
+        		cout << endl;
+        	}
 			if(row == 2) {
 				for (int i = 0; i < 3; i++) {
     				if(bigRow == current_board.row && i == current_board.col)
