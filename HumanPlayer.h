@@ -6,8 +6,11 @@ using namespace std;
 
 class HumanPlayer: public Player{
 public:
-    HumanPlayer(char p) : Player(p) {}
+    HumanPlayer(char p) : Player(p) {
+        name = 'H';
+    }
     void getMove(TicTacToe board, int& row, int& col);
+    void getMove(NineBoard board, int& row, int& col){}
     void selectBoard(NineBoard boards, int& row, int& col);
 };
 

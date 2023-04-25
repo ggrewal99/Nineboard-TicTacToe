@@ -39,12 +39,13 @@
 		<Unit filename="NineBoard TicTacToe game.cbp" />
 		<Unit filename="NineBoard TicTacToe game.layout" />
 		<Unit filename="NineBoard.h" />
+		<Unit filename="Player.h" />
 		<Unit filename="RandomPlayer.h" />
+		<Unit filename="SmartPlayer.h" />
 		<Unit filename="TicTacToe.h" />
 		<Unit filename="assignment1.pdf" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.exe" />
-		<Unit filename="tempCodeRunnerFile.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

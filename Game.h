@@ -40,7 +40,10 @@ char Game::play()
                 board = nBoards.getBoard();
                 cout << "X selects board (" << (x + 1) << "," << (y + 1) << ") " << endl;
             }
-            player[0]->getMove(board, x, y);
+            if (player[0]->getName() == 'S')
+                player[0]->getMove(nBoards, x, y);
+            else
+                player[0]->getMove(board, x, y);
             cout << "X makes a move (" << (x + 1) << "," << (y + 1) << ") "
 					<< endl;
             nBoards.addMove(playerSymbol, x, y);
@@ -57,7 +60,10 @@ char Game::play()
                 board = nBoards.getBoard();
                 cout << "O selects board (" << (x + 1) << "," << (y + 1) << ") " << endl;
             }
-            player[1]->getMove(board, x, y);
+            if (player[1]->getName() == 'S')
+                player[1]->getMove(nBoards, x, y);
+            else
+                player[1]->getMove(board, x, y);
             cout << "O makes a move (" << (x + 1) << "," << (y + 1) << ") "
 					<< endl;
             nBoards.addMove(playerSymbol, x, y);
