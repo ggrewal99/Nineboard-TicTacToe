@@ -6,8 +6,11 @@ using namespace std;
 
 class RandomPlayer: public Player {
 public:
-    RandomPlayer(char p) : Player(p) {}
+    RandomPlayer(char p) : Player(p) {
+        name = 'R';
+    }
     void getMove(TicTacToe board, int& row, int& col);
+    void getMove(NineBoard board, int& row, int& col){}
     void selectBoard(NineBoard boards, int& row, int& col);
 };
 

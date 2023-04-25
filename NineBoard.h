@@ -32,13 +32,21 @@ public:
         current_board = BoardCoordinate(row, col, status);
     }
 
+    NineBoard(const NineBoard& cNBoard) {
+        current_board = cNBoard.current_board;
+        noOfMoves = cNBoard.noOfMoves;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                nBoards[i][j] = cNBoard.nBoards[i][j];
+            }
+        }
+    }
+
     BoardCoordinate getCurrent_boardCoord() {
         return current_board;
     }
 
-    char getCurrent_boardStatus() {
-        return current_board.status;
-    }
     TicTacToe getBoard() {
         return nBoards[current_board.row][current_board.col];
     }
@@ -50,6 +58,9 @@ public:
     }
     void displayBoards();
     bool addMove(char player, int x, int y);
+    void removeMove(char player, int boardRow, int boardCol, int x, int y) {
+        nBoards[boardRow][boardCol].removeMove(x, y);
+    }
     char gameStatus();
     char getStatus(int row, int col) {
         return nBoards[row][col].getStatus();
@@ -63,6 +74,9 @@ public:
     }
     char boardStatus(int x, int y) {
        return nBoards[x][y].gameStatus();
+    }
+    bool isFull(){
+        return (noOfMoves == 81);
     }
 };
 

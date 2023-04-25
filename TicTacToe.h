@@ -27,6 +27,17 @@ class TicTacToe {
 			status = 'C';
 		}
 
+		TicTacToe(const TicTacToe& cBoard) {
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 3; j++) {
+					board[i][j] = cBoard.board[i][j];
+				}
+			}
+			noOfMoves = cBoard.noOfMoves;
+			emptyCells = cBoard.emptyCells;
+			status = cBoard.status;
+		}
+
         void displayBoard();
 		bool isValidMove(int row, int col) const;
 		// Return 'D' for draw 'C' for continue and 'X' or 'O' for win
